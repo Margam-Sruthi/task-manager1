@@ -49,20 +49,20 @@ const Dashboard = () => {
   }
 
   const statCards = [
-    { label: 'Total Tasks', value: stats.total, icon: ClipboardList, color: 'text-blue-600', bg: 'bg-blue-50' },
+    { label: 'Total Tasks', value: stats.total, icon: ClipboardList, color: 'text-indigo-600', bg: 'bg-indigo-50' },
     { label: 'In Progress', value: stats.inProgress, icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
     { label: 'Completed', value: stats.completed, icon: CheckCircle2, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-    { label: 'Overdue', value: stats.overdue, icon: AlertCircle, color: 'text-red-600', bg: 'bg-red-50' },
+    { label: 'Overdue', value: stats.overdue, icon: AlertCircle, color: 'text-rose-600', bg: 'bg-rose-50' },
   ];
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Task Overview</h2>
-          <p className="text-slate-500">Welcome back! Here's what's happening today.</p>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Task Overview</h2>
+          <p className="text-slate-500 font-medium">Welcome back! Here's what's happening today.</p>
         </div>
-        <Link to="/tasks" className="btn-primary flex items-center gap-2 self-start md:self-auto">
+        <Link to="/tasks" className="btn-primary self-start md:self-auto">
           <Plus size={20} />
           Add New Task
         </Link>
@@ -70,13 +70,13 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((stat) => (
-          <div key={stat.label} className="card flex items-center gap-4">
-            <div className={`p-3 rounded-xl ${stat.bg} ${stat.color}`}>
-              <stat.icon size={24} />
+          <div key={stat.label} className="stat-card flex items-center gap-5">
+            <div className={`p-4 rounded-2xl ${stat.bg} ${stat.color} shadow-sm`}>
+              <stat.icon size={26} />
             </div>
             <div>
-              <p className="text-sm text-slate-500 font-medium">{stat.label}</p>
-              <h3 className="text-2xl font-bold text-slate-900">{stat.value}</h3>
+              <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">{stat.label}</p>
+              <h3 className="text-3xl font-black text-slate-900 leading-none">{stat.value}</h3>
             </div>
           </div>
         ))}
@@ -85,8 +85,8 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-slate-900">Recent Tasks</h3>
-            <Link to="/tasks" className="text-primary-600 text-sm font-bold hover:underline flex items-center gap-1">
+            <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">Recent Tasks</h3>
+            <Link to="/tasks" className="text-indigo-600 text-sm font-black hover:underline flex items-center gap-1 uppercase tracking-wider">
               View All <ArrowUpRight size={14} />
             </Link>
           </div>

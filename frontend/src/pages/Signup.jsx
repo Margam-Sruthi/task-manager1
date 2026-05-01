@@ -27,7 +27,8 @@ const Signup = () => {
       await signup(formData);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create account');
+      const message = err.response?.data?.message || err.message || 'Failed to create account';
+      setError(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -35,13 +36,13 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="max-w-md w-full glass p-8 rounded-2xl shadow-2xl my-8">
-        <div className="text-center mb-8">
-          <div className="bg-primary-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <UserPlus className="text-primary-600" size={32} />
+      <div className="max-w-md w-full glass p-10 rounded-3xl animate-in fade-in zoom-in duration-500 my-8">
+        <div className="text-center mb-10">
+          <div className="bg-indigo-600 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-indigo-200 -rotate-3 hover:rotate-0 transition-transform duration-300">
+            <UserPlus className="text-white" size={40} />
           </div>
-          <h2 className="text-3xl font-bold text-slate-900">Create Account</h2>
-          <p className="text-slate-500 mt-2">Join your team and stay organized</p>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tight">Create Account</h2>
+          <p className="text-slate-500 mt-3 font-medium text-lg">Join your team and stay organized</p>
         </div>
 
         {error && (
@@ -51,15 +52,15 @@ const Signup = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-sm font-semibold text-slate-700 ml-1">Full Name</label>
+          <div className="space-y-2">
+            <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input
                 type="text"
                 name="name"
                 required
-                className="input-field pl-10"
+                className="input-field pl-12"
                 placeholder="John Doe"
                 value={formData.name}
                 onChange={handleChange}
